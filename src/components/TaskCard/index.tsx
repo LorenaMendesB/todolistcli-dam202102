@@ -7,7 +7,7 @@ interface ButtonProps extends TouchableOpacityProps {
     title: string;
 }
 
-export function TaskCard({ onPress, ...rest }) {
+export function TaskCard({ onPress,renderItem, ...rest }) {
    
 <FlatList
         data={tasks}

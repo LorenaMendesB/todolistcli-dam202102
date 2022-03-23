@@ -1,29 +1,22 @@
 import React from 'react';
-import { TouchableOpacity, FlatList, Text, TouchableOpacityProps } from 'react-native';
+import { TouchableOpacity, Text, TouchableOpacityProps } from 'react-native';
 
 import { styles } from './styles';
 
-interface ButtonProps extends TouchableOpacityProps {
+
+
+interface TaskData extends TouchableOpacityProps {
     title: string;
 }
 
-export function TaskCard({ onPress,renderItem, ...rest }) {
-   
-<FlatList
-        data={tasks}
-        keyExtractor={item => item.id}
-        renderItem={({ item }) => (
-          <TouchableOpacity 
+export function TaskCard({title, ...rest }: TaskData) {
+return(<TouchableOpacity 
             style={styles.buttonTask}
-            onPress={() => onPress(item.id)}
-          {...rest}
-          >
+          {...rest}     >
             <Text style={styles.textTask}>
-              {item.name}
+              {title}
             </Text>
           </TouchableOpacity>
-        )
-        }
- /> 
-
+          );
+          
 }

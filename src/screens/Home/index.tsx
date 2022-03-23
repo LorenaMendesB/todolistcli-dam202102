@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { 
-  SafeAreaView, 
-  Text, 
-  TextInput, 
+import {
+  Text,
+  TextInput,
   TouchableOpacity,
   ScrollView,
- 
+  SafeAreaView,
+  FlatList
+
 } from 'react-native';
 
 import { Button } from '../../components/Button';
@@ -41,25 +42,33 @@ export function Home() {
       <Text style={styles.text}>
         Ola, Leonardo!
       </Text>
-      <TextInput 
+      <TextInput
         style={styles.input}
         placeholder="Digite a tarefa"
         placeholderTextColor="#555"
         onChangeText={setNewTask}
       />
 
-      <Button 
+      <Button
         onPress={handleAddNewTask}
         activeOpacity={0.7}
         title="Adicionar tarefa"
       />
 
-      <Text style={ [styles.text, { marginTop: 20}] }>
+      <Text style={[styles.text, { marginTop: 20 }]}>
         Minhas Tarefas
       </Text>
 
-<TaskCard onPress={handleRemoveTask}/>
-
+      <FlatList
+        data={tasks}
+        keyExtractor={item => item.id}
+        renderItem={({ item }) => (
+          <TaskCard title={item.name}
+            onPress={() => handleRemoveTask(item.id)}
+          />
+        )
+        }      />
+    </SafeAreaView>
   );
 }
 

@@ -8,7 +8,7 @@ import { styles } from './styles';
 interface TaskData extends TouchableOpacityProps {
     title: string;
 }
-
+//função FlatList
 export function TaskCard({title, ...rest }: TaskData) {
 return(<TouchableOpacity 
             style={styles.buttonTask}
